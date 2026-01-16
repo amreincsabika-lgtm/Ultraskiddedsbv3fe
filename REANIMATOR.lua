@@ -1,4 +1,5 @@
 ---- BY Mizt#5033
+--i'll soon make my own reanimator
 if not Bypass then Bypass = "limbs" end
 HumanDied = false
 
