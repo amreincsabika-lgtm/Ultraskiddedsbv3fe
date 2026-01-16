@@ -1,5 +1,11 @@
 ---- BY Mizt#5033
 --i'll soon make my own reanimator
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "FE Bypass by Chara";
+	Text = "it's from FE USC ;)";
+	Duration = 10;
+	Button1 = "Ok";
+})
 if not Bypass then Bypass = "limbs" end
 HumanDied = false
 
