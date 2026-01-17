@@ -2,6 +2,7 @@
 --todo: finish this lol
 local lplr = game.Players.LocalPlayer
 local chr = lplr.Character
+local uis = game.UserInputService
 --Bypass == "death"
 local partsWithId = {}
 local awaitRef = {}
@@ -454,5 +455,75 @@ local function Scan(item, parent)
 	obj.Parent = parent
 	return obj
 end
-local fakechr = Scan(root,workspace)
-chr.Humanoid.Health=0
+local fakechr:Model = Scan(root,workspace)
+fakechr.Name="non"
+chr.Humanoid.RequiresNeck=false
+chr.Humanoid.BreakJointsOnDeath = false
+--chr.Humanoid.Health=0
+--chr:BreakJoints()
+fakechr:PivotTo(chr:GetPivot())
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "Reanimation";
+	Text = "Reanimating your avatar",
+	Duration = 3;
+})
+game.TextChatService.TextChannels.RBXGeneral:SendAsync("reanimation has run!")
+local W,A,S,D = false,false,false,false
+local limbs = {"Head","Torso","Left Arm","Right Arm","Left Leg","Right Leg"}
+local motors = {"RootJoint","Neck","Left Shoulder","Right Shoulder","Left Hip","Right Hip"}
+for i,v in pairs(motors) do
+	pcall(function()
+		chr:FindFirstChild(v,true).Enabled = false
+	end)
+end
+--chr.Humanoid:ChangeState(15)
+--for i = 1,60 do
+	--task.wait()
+	--fakechr.Humanoid:ChangeState(3)
+--end
+task.wait(3)
+game.TextChatService.TextChannels.RBXGeneral:SendAsync("-net")
+--for i = 1,10 do
+	--task.wait()
+	--fakechr.Humanoid:ChangeState(3)
+--end
+for i,v in pairs(limbs) do
+chr[v].CFrame = fakechr[v].CFrame
+end
+for i,v in pairs(limbs) do
+	local w = Instance.new("Weld")
+	w.Parent = chr[v]
+	w.Part1=chr[v]
+	w.Part0=fakechr[v]
+end
+lplr.Character=fakechr
+while fakechr and chr and lplr and chr:IsDescendantOf(game) and fakechr:IsDescendantOf(game) and lplr:IsDescendantOf(game) and chr.Humanoid.Health ~= 0 do
+	game:GetService("RunService").RenderStepped:Wait()
+	fakechr.Humanoid.Jump = uis:IsKeyDown(Enum.KeyCode.Space)
+	W=uis:IsKeyDown(Enum.KeyCode.W)
+	A=uis:IsKeyDown(Enum.KeyCode.A)
+	S=uis:IsKeyDown(Enum.KeyCode.S)
+	D=uis:IsKeyDown(Enum.KeyCode.D)
+	if W then
+		fakechr.Humanoid:Move(Vector3.new(0,0,-1e4),true)
+	end
+	if A then
+		fakechr.Humanoid:Move(Vector3.new(-1e4,0,0),true)
+	end
+	if S then
+		fakechr.Humanoid:Move(Vector3.new(0,0,1e4),true)
+	end
+	if D then
+		fakechr.Humanoid:Move(Vector3.new(1e4,0,0),true)
+	end
+	--for i,v in pairs(limbs) do
+		--chr[v].CFrame = fakechr[v].CFrame
+	--end
+end
+game.TextChatService.TextChannels.RBXGeneral:SendAsync("reanimation has stopped")
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "Reanimation";
+	Text = "Player reset.",
+	Duration = 3;
+})
+fakechr:Destroy()
