@@ -973,20 +973,20 @@ function WACKYEFFECT(Table)
 				end
 				EFFECT.Transparency = 1
 				if PLAYSSOUND == false then
-					EFFECT:remove()
+					EFFECT:Destroy()
 				else
 					repeat
 						Swait()
 					until EFFECT:FindFirstChildOfClass("Sound") == nil
-					EFFECT:remove()
+					EFFECT:Destroy()
 				end
 			elseif PLAYSSOUND == false then
-				EFFECT:remove()
+				EFFECT:Destroy()
 			else
 				repeat
 					Swait()
 				until EFFECT:FindFirstChildOfClass("Sound") == nil
-				EFFECT:remove()
+				EFFECT:Destroy()
 			end
 		end))
 		return EFFECT
@@ -1144,20 +1144,20 @@ function WACKYEFFECTpp(Table)
 				end
 				EFFECT.Transparency = 1
 				if PLAYSSOUND == false then
-					EFFECT:remove()
+					EFFECT:Destroy()
 				else
 					repeat
 						Swait()
 					until EFFECT:FindFirstChildOfClass("Sound") == nil
-					EFFECT:remove()
+					EFFECT:Destroy()
 				end
 			elseif PLAYSSOUND == false then
-				EFFECT:remove()
+				EFFECT:Destroy()
 			else
 				repeat
 					Swait()
 				until EFFECT:FindFirstChildOfClass("Sound") == nil
-				EFFECT:remove()
+				EFFECT:Destroy()
 			end
 		end))
 		return EFFECT
@@ -1309,20 +1309,20 @@ function WACKYEFFECT2(Table)
 				end
 				EFFECT.Transparency = 1
 				if PLAYSSOUND == false then
-					EFFECT:remove()
+					EFFECT:Destroy()
 				else
 					repeat
 						Swait()
 					until EFFECT:FindFirstChildOfClass("Sound") == nil
-					EFFECT:remove()
+					EFFECT:Destroy()
 				end
 			elseif PLAYSSOUND == false then
-				EFFECT:remove()
+				EFFECT:Destroy()
 			else
 				repeat
 					Swait()
 				until EFFECT:FindFirstChildOfClass("Sound") == nil
-				EFFECT:remove()
+				EFFECT:Destroy()
 			end
 		end))
 		return EFFECT
