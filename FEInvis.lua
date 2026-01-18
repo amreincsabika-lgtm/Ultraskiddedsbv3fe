@@ -32,6 +32,11 @@ local KeyPress = game.UserInputService.InputBegan:Connect(function(Key,bor)
 				--local ogpos = fakechar.HumanoidRootPart.CFrame
 			end)
 			fakechar.Name = "non"
+			for i,v in pairs(curchar:GetDescendants()) do
+				if v:IsA("BasePart") then
+					v.CanCollide = false
+				end
+			end
 			for i,v in pairs(fakechar:GetDescendants()) do
 				if v:IsA("BasePart") then
 					v.Transparency = .75
