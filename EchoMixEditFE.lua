@@ -1,41 +1,39 @@
 --EchoMix FE version
 --Conversion to fe by amreincsabika0/images_ge(alt)
 --Idk what name of this echo edit, the model inside module was named "EchoMix"
-coroutine.resume(coroutine.create(function()
-	local Global = (getgenv and getgenv()) or shared
-	Global.GelatekReanimateConfig = {
-		-- [[ Rig Settings ]] --
-		["AnimationsDisabled"] = true,
-		["R15ToR6"] = false,
-		["DontBreakHairWelds"] = false,
-		["PermanentDeath"] = false,
-		["Headless"] = false,
-		["TeleportBackWhenVoided"] = false,
+local Global = (getgenv and getgenv()) or shared
+Global.GelatekReanimateConfig = {
+    -- [[ Rig Settings ]] --
+    ["AnimationsDisabled"] = true,
+    ["R15ToR6"] = false,
+    ["DontBreakHairWelds"] = false,
+    ["PermanentDeath"] = false,
+    ["Headless"] = false,
+    ["TeleportBackWhenVoided"] = false,
+    
+    -- [[ Reanimation Settings ]] --
+    ["AlignReanimate"] = false,
+    ["FullForceAlign"] = false,
+    ["FasterHeartbeat"] = false,
+    ["DynamicalVelocity"] = false,
+    ["DisableTweaks"] = false,
+    
+    -- [[ Optimization ]] --
+    ["OptimizeGame"] = false,
 
-		-- [[ Reanimation Settings ]] --
-		["AlignReanimate"] = false,
-		["FullForceAlign"] = false,
-		["FasterHeartbeat"] = true,
-		["DynamicalVelocity"] = false,
-		["DisableTweaks"] = false,
-
-		-- [[ Optimization ]] --
-		["OptimizeGame"] = true,
-
-		-- [[ Miscellacious ]] --
-		["LoadLibrary"] = false,
-		["DetailedCredits"] = false,
-
-		-- [[ Flinging Methods ]] --
-		["TorsoFling"] = false,
-		["BulletEnabled"] = true,
-		["BulletConfig"] = {
-			["RunAfterReanimate"] = true,
-			["LockBulletOnTorso"] = false
-		}
-	}
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Gelatekussy/GelatekReanimate/main/Main.lua"))()
-end))
+    -- [[ Miscellacious ]] --
+    ["LoadLibrary"] = false,
+    ["DetailedCredits"] = false,
+    
+    -- [[ Flinging Methods ]] --
+    ["TorsoFling"] = false,
+    ["BulletEnabled"] = false,
+    ["BulletConfig"] = {
+        ["RunAfterReanimate"] = false,
+        ["LockBulletOnTorso"] = false
+    }
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Gelatekussy/GelatekReanimate/main/Main.lua"))()
 game.TextChatService.TextChannels.RBXGeneral:SendAsync("-net")
 task.wait(.5)
 game.TextChatService.TextChannels.RBXGeneral:SendAsync("Executor: "..identifyexecutor())
